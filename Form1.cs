@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using MetroFramework.Controls;
 using System.Windows.Forms;
@@ -18,8 +19,30 @@ namespace SAMPClient
             settings = Settings.Read();
             Text = "SA-MP Client - " + settings.UserNickname;
 
-            restoreDefaultData();
-//            metroScrollBar1.Size = new Size(panel1.Width, metroScrollBar1.Size.Height);
+            RestoreDefaultData();
+
+            /* add test */
+            var favourites = Favourites.Read();
+            
+            favourites.AddToFavourites(new Server("T1", "T1"));
+            favourites.AddToFavourites(new Server("T2", "T1"));
+            favourites.AddToFavourites(new Server("T3", "T1"));
+            favourites.AddToFavourites(new Server("T4", "T1"));
+            favourites.AddToFavourites(new Server("T5", "T1"));
+            favourites.AddToFavourites(new Server("T6", "T1"));
+            favourites.AddToFavourites(new Server("T7", "T1"));
+            favourites.Save();
+
+            favourites.Servers.ForEach(server =>
+            {
+                var tile = new MetroTile
+                {
+                    Text = server.HostName + Environment.NewLine + server.Ip,
+                    Size = new Size(152, 137)
+                };
+
+                flowLayoutPanel1.Controls.Add(tile);
+            });
         }
 
         private void metroButton3_Click(object sender, EventArgs e)
@@ -34,7 +57,7 @@ namespace SAMPClient
             settings.Save();
         }
 
-        private void restoreDefaultData()
+        private void RestoreDefaultData()
         {
             nicknameTextBox.Text = settings.UserNickname;
             gtaLocationTextBox.Text = settings.GTALocation;
@@ -44,7 +67,7 @@ namespace SAMPClient
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            restoreDefaultData();
+            RestoreDefaultData();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -54,6 +77,5 @@ namespace SAMPClient
             var directory = selectGTAPositionDialog.SelectedPath;
             gtaLocationTextBox.Text = directory;
         }
-
     }
 }

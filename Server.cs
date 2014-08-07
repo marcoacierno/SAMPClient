@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace SAMPClient
 {
-    class Server
+    [XmlRoot("server")]
+    public class Server
     {
+        [XmlElement("hostname")]
         public string HostName;
-        public string ip;
+        [XmlElement("ip")]
+        public string Ip;
 
         public Server(string hostname, string ip)
         {
             HostName = hostname;
-            this.ip = ip;
+            Ip = ip;
         }
+
+        private Server() { }
     }
 }

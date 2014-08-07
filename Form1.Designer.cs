@@ -35,7 +35,7 @@ namespace SAMPClient
         {
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
@@ -51,10 +51,8 @@ namespace SAMPClient
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.selectGTAPositionDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +79,7 @@ namespace SAMPClient
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.panel1);
+            this.metroTabPage1.Controls.Add(this.flowLayoutPanel1);
             this.metroTabPage1.CustomBackground = false;
             this.metroTabPage1.HorizontalScrollbar = false;
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
@@ -100,14 +98,15 @@ namespace SAMPClient
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            this.panel1.Controls.Add(this.metroTile1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(774, 386);
-            this.panel1.TabIndex = 2;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(774, 386);
+            this.flowLayoutPanel1.TabIndex = 3;
             // 
             // metroTabPage4
             // 
@@ -361,22 +360,6 @@ namespace SAMPClient
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.CustomBackground = false;
-            this.metroTile1.CustomForeColor = false;
-            this.metroTile1.Location = new System.Drawing.Point(16, 17);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.PaintTileCount = true;
-            this.metroTile1.Size = new System.Drawing.Size(135, 136);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Yellow;
-            this.metroTile1.StyleManager = null;
-            this.metroTile1.TabIndex = 0;
-            this.metroTile1.Text = ".: uL | Wargrounds - LAGSHOT (it\'s back!) :.\r\ndedi.slice-vps.nl:7777";
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTile1.TileCount = 0;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,7 +373,6 @@ namespace SAMPClient
             this.Text = "SA-MP Client";
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage4.PerformLayout();
             this.ResumeLayout(false);
@@ -416,8 +398,7 @@ namespace SAMPClient
         private MetroButton metroButton2;
         private MetroButton metroButton3;
         private FolderBrowserDialog selectGTAPositionDialog;
-        private Panel panel1;
-        private MetroTile metroTile1;
+        private FlowLayoutPanel flowLayoutPanel1;
 
     }
 }
