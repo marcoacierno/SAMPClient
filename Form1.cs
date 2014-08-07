@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using MetroFramework;
 using MetroFramework.Controls;
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -23,22 +24,14 @@ namespace SAMPClient
 
             /* add test */
             var favourites = Favourites.Read();
-            
-            favourites.AddToFavourites(new Server("T1", "T1"));
-            favourites.AddToFavourites(new Server("T2", "T1"));
-            favourites.AddToFavourites(new Server("T3", "T1"));
-            favourites.AddToFavourites(new Server("T4", "T1"));
-            favourites.AddToFavourites(new Server("T5", "T1"));
-            favourites.AddToFavourites(new Server("T6", "T1"));
-            favourites.AddToFavourites(new Server("T7", "T1"));
-            favourites.Save();
-
+ 
             favourites.Servers.ForEach(server =>
             {
                 var tile = new MetroTile
                 {
                     Text = server.HostName + Environment.NewLine + server.Ip,
-                    Size = new Size(152, 137)
+                    Size = new Size(152, 137),
+                    Style = MetroColorStyle.Yellow
                 };
 
                 flowLayoutPanel1.Controls.Add(tile);

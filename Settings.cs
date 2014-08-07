@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Microsoft.Win32;
 
 namespace SAMPClient
 {
@@ -75,10 +76,13 @@ namespace SAMPClient
 
         private static Settings CreateDefault()
         {
+            var key = Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("SAMP");
+
+            /* l'utente deve chiudere almeno una volta sa-mp per far salvare i dati */
             var settings = new Settings
             {
-                GTALocation = "unknow",
-                UserNickname = "user" + new Random().Next(0, 500),
+                GTALocation = (string)key.GetValue("gta_sa_exe") ?? "Unknow",
+                UserNickname = (string)key.GetValue("PlayerName") ?? "User" + new Random().Next(0, 10),
                 AutoSaveRconPassword = false,
                 AutoSaveServerPassword = false
             };
