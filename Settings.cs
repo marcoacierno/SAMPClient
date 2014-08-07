@@ -19,14 +19,19 @@ namespace SAMPClient
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteStartElement("Settings");
+
             writer.WriteElementString("GTALocation", GTALocation);
             writer.WriteElementString("Nickname", UserNickname);
             writer.WriteElementString("AutoSaveRcon", AutoSaveRconPassword.ToString());
             writer.WriteElementString("AutoSaveServerPsw", AutoSaveServerPassword.ToString());
+
+            writer.WriteEndElement();
         }
 
         public void ReadXml(XmlReader reader)
         {
+            reader.ReadStartElement("Settings");
             reader.ReadStartElement("Settings");
 
             GTALocation = reader.ReadElementString("GTALocation");
@@ -34,6 +39,7 @@ namespace SAMPClient
             AutoSaveRconPassword = Boolean.Parse(reader.ReadElementString("AutoSaveRcon"));
             AutoSaveServerPassword = Boolean.Parse(reader.ReadElementString("AutoSaveServerPsw"));
 
+            reader.ReadEndElement();
             reader.ReadEndElement();
         }
 
