@@ -13,39 +13,45 @@ using MetroFramework.Forms;
 
 namespace SAMPClient
 {
-    public partial class Form1 : MetroForm
+    public partial class Main : MetroForm
     {
-        public Form1()
+        private MetroTabControl mainTabs;
+        private Settings settings;
+
+        public Main()
         {
             InitializeComponent();
             InitializeMetroComponents();
+
+            settings = Settings.Read();
         }
 
         private void InitializeMetroComponents()
         {
-            MetroTabControl tabServerTypes = new MetroTabControl();
-            tabServerTypes.Dock = DockStyle.Fill;
+            mainTabs = new MetroTabControl();
+            mainTabs.Dock = DockStyle.Fill;
 
-            MetroTabPage favourites = new MetroTabPage();
+            var favourites = new MetroTabPage();
             favourites.Text = "Preferiti";
 
-            tabServerTypes.TabPages.Add(favourites);
+            mainTabs.TabPages.Add(favourites);
 
-            MetroTabPage internet = new MetroTabPage();
+            var internet = new MetroTabPage();
             internet.Text = "Internet";
 
-            tabServerTypes.TabPages.Add(internet);
+            mainTabs.TabPages.Add(internet);
 
-            MetroTabPage hosted = new MetroTabPage();
+            var hosted = new MetroTabPage();
             hosted.Text = "Hosted";
 
-            tabServerTypes.TabPages.Add(hosted);
+            mainTabs.TabPages.Add(hosted);
 
-            MetroTabPage settings = new MetroTabPage();
+            var settings = new MetroTabPage();
             settings.Text = "Opzioni";
-            tabServerTypes.TabPages.Add(settings);
+            mainTabs.TabPages.Add(settings);
 
-            this.Controls.Add(tabServerTypes);
+            Controls.Add(mainTabs);
         }
+
     }
 }
