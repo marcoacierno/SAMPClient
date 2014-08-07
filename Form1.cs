@@ -21,37 +21,10 @@ namespace SAMPClient
         public Main()
         {
             InitializeComponent();
-            InitializeMetroComponents();
 
             settings = Settings.Read();
+            Text = "SA-MP Client - " + settings.UserNickname;
+
         }
-
-        private void InitializeMetroComponents()
-        {
-            mainTabs = new MetroTabControl();
-            mainTabs.Dock = DockStyle.Fill;
-
-            var favourites = new MetroTabPage();
-            favourites.Text = "Preferiti";
-
-            mainTabs.TabPages.Add(favourites);
-
-            var internet = new MetroTabPage();
-            internet.Text = "Internet";
-
-            mainTabs.TabPages.Add(internet);
-
-            var hosted = new MetroTabPage();
-            hosted.Text = "Hosted";
-
-            mainTabs.TabPages.Add(hosted);
-
-            var settings = new MetroTabPage();
-            settings.Text = "Opzioni";
-            mainTabs.TabPages.Add(settings);
-
-            Controls.Add(mainTabs);
-        }
-
     }
 }
