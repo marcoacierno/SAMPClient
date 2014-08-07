@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SAMPClient
 {
-    sealed class Server
+    class Server
     {
-        public readonly string HostName;
-        public readonly string IP;
+        public string HostName;
+        public string ip;
 
         public Server(string hostname, string ip)
         {
             HostName = hostname;
-            IP = ip;
+            this.ip = ip;
         }
     }
 }

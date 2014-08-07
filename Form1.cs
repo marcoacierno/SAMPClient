@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MetroFramework;
 using MetroFramework.Controls;
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -24,7 +17,9 @@ namespace SAMPClient
 
             settings = Settings.Read();
             Text = "SA-MP Client - " + settings.UserNickname;
+
             restoreDefaultData();
+//            metroScrollBar1.Size = new Size(panel1.Width, metroScrollBar1.Size.Height);
         }
 
         private void metroButton3_Click(object sender, EventArgs e)
@@ -54,11 +49,11 @@ namespace SAMPClient
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if (selectGTAPositionDialog.ShowDialog() == DialogResult.OK)
-            {
-                string directory = selectGTAPositionDialog.SelectedPath;
-                gtaLocationTextBox.Text = directory;
-            }
+            if (selectGTAPositionDialog.ShowDialog() != DialogResult.OK) return;
+            
+            var directory = selectGTAPositionDialog.SelectedPath;
+            gtaLocationTextBox.Text = directory;
         }
+
     }
 }
