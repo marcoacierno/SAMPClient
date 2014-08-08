@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System.Windows.Forms;
+using MetroFramework;
+using MetroFramework.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using MetroFramework;
-using MetroFramework.Controls;
-using System.Windows.Forms;
-using MetroFramework.Forms;
 
 namespace SAMPClient
 {
@@ -13,7 +13,7 @@ namespace SAMPClient
     {
         private MetroTabControl mainTabs;
         private Settings settings;
-
+        
         public Main()
         {
             InitializeComponent();
@@ -32,9 +32,17 @@ namespace SAMPClient
                     Text = server.HostName + Environment.NewLine + server.Ip,
                     Size = new Size(152, 137),
                     Style = MetroColorStyle.Yellow,
+                    AllowDrop = true
                 };
                 tile.Click += (s, e) =>
                 {
+                    var result = MetroFramework.MetroMessageBox.Show(this, "Sei sicuro di voler entrare nel server " + server.HostName + " (" + server.Ip + ")?", "Ingresso", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+
                     var processStart = new ProcessStartInfo
                     {
                         WorkingDirectory = settings.GTABasePath,
@@ -47,6 +55,7 @@ namespace SAMPClient
 
                 flowLayoutPanel1.Controls.Add(tile);
             });
+
         }
 
         private void metroButton3_Click(object sender, EventArgs e)
@@ -56,7 +65,7 @@ namespace SAMPClient
             settings.AutoSaveRconPassword = savePasswordRcon.Checked;
             settings.AutoSaveServerPassword = saveServerPassword.Checked;
 
-            Text = "SA-MP Client - " + settings.UserNickname;
+            base.Text = "SA-MP Client - " + settings.UserNickname;
 
             settings.Save();
         }
@@ -80,6 +89,11 @@ namespace SAMPClient
             
             var directory = selectGTAPositionDialog.SelectedPath;
             gtaLocationTextBox.Text = directory;
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
