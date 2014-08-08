@@ -11,43 +11,19 @@ using Microsoft.Win32;
 
 namespace SAMPClient
 {
-    public class Settings : IXmlSerializable
+    [XmlRoot("settings")]
+    public class Settings
     {
+        [XmlElement("gtalocation")]
         public string GTALocation;
+        [XmlElement("basepath")] 
+        public string GTABasePath;
+        [XmlElement("nickname")]
         public string UserNickname;
+        [XmlElement("saveserverpsw")]
         public bool AutoSaveServerPassword;
+        [XmlElement("saverconpsw")]
         public bool AutoSaveRconPassword;
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteStartElement("Settings");
-
-            writer.WriteElementString("GTALocation", GTALocation);
-            writer.WriteElementString("Nickname", UserNickname);
-            writer.WriteElementString("AutoSaveRcon", AutoSaveRconPassword.ToString());
-            writer.WriteElementString("AutoSaveServerPsw", AutoSaveServerPassword.ToString());
-
-            writer.WriteEndElement();
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            reader.ReadStartElement("Settings");
-            reader.ReadStartElement("Settings");
-
-            GTALocation = reader.ReadElementString("GTALocation");
-            UserNickname = reader.ReadElementString("Nickname");
-            AutoSaveRconPassword = Boolean.Parse(reader.ReadElementString("AutoSaveRcon"));
-            AutoSaveServerPassword = Boolean.Parse(reader.ReadElementString("AutoSaveServerPsw"));
-
-            reader.ReadEndElement();
-            reader.ReadEndElement();
-        }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
 
         public void Save()
         {
@@ -86,6 +62,7 @@ namespace SAMPClient
                 AutoSaveRconPassword = false,
                 AutoSaveServerPassword = false
             };
+            settings.GTABasePath = Path.GetDirectoryName(settings.GTALocation);
 
             settings.Save();
             return settings;

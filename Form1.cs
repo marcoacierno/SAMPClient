@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using MetroFramework;
 using MetroFramework.Controls;
@@ -22,7 +23,6 @@ namespace SAMPClient
 
             RestoreDefaultData();
 
-            /* add test */
             var favourites = Favourites.Read();
  
             favourites.Servers.ForEach(server =>
@@ -31,7 +31,18 @@ namespace SAMPClient
                 {
                     Text = server.HostName + Environment.NewLine + server.Ip,
                     Size = new Size(152, 137),
-                    Style = MetroColorStyle.Yellow
+                    Style = MetroColorStyle.Yellow,
+                };
+                tile.Click += (s, e) =>
+                {
+                    var processStart = new ProcessStartInfo
+                    {
+                        WorkingDirectory = settings.GTABasePath,
+                        FileName = "samp",
+                        Arguments = server.Ip
+                    };
+
+                    Process.Start(processStart);
                 };
 
                 flowLayoutPanel1.Controls.Add(tile);
