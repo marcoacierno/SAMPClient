@@ -24,6 +24,9 @@ namespace SAMPClient
             RestoreDefaultData();
 
             var favourites = Favourites.Read();
+//            favourites.AddToFavourites(new Server(".: uL | Wargrounds - NEW SYNC (skinhit) :.", "dedi.slice-vps.nl:8888"));
+//            favourites.AddToFavourites(new Server(".: uL | Wargrounds - LAGSHOT (it's back!) :.", "dedi.slice-vps.nl:7777"));
+//            favourites.Save();
  
             favourites.Servers.ForEach(server =>
             {
@@ -34,9 +37,12 @@ namespace SAMPClient
                     Style = MetroColorStyle.Yellow,
                     AllowDrop = true
                 };
-                tile.Click += (s, e) =>
+                tile.Click += (sender, e) =>
                 {
-                    var result = MetroFramework.MetroMessageBox.Show(this, "Sei sicuro di voler entrare nel server " + server.HostName + " (" + server.Ip + ")?", "Ingresso", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                    var result = MetroFramework.MetroMessageBox.Show(this,
+                        "Sei sicuro di voler entrare nel server " + server.HostName + " (" + server.Ip + ")?" + Environment.NewLine +
+                        server.ServerInfo,
+                        "Ingresso", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
 
                     if (result == DialogResult.No)
                     {
@@ -52,6 +58,7 @@ namespace SAMPClient
 
                     Process.Start(processStart);
                 };
+                server.ServerInfo.ReadData();
 
                 flowLayoutPanel1.Controls.Add(tile);
             });
@@ -89,11 +96,6 @@ namespace SAMPClient
             
             var directory = selectGTAPositionDialog.SelectedPath;
             gtaLocationTextBox.Text = directory;
-        }
-
-        private void metroButton4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
