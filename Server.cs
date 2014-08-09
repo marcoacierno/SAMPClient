@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
-using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Schema;
 using System.Xml.Serialization;
+using SAMPClient.Tests.Utility.SAMP;
 
 namespace SAMPClient
 {
@@ -57,41 +50,56 @@ namespace SAMPClient
         public int Weather;
         public int Lagcomp;
         public List<Player> Players;
-        public volatile bool dataAvaitable;
         public Server Server;
         public bool Online;
+
+        private bool locked;
+        public bool Locked
+        {
+            get { return locked; }
+            set
+            {
+                var oldLocked = Locked;
+                if (oldLocked != value)
+                {
+                    Updated = true;
+                }
+
+                locked = value;
+            }
+        }
+
+        public bool Updated;
 
         public ServerInfo(Server server)
         {
             Server = server;
         }
 
-        public void ReadData()
+        public Task<bool> ReadData()
         {
-            IPAddress ip;
-            var success = IPAddress.TryParse(Server.Ip, out ip);
-
-            if (!success)
+            return Task<bool>.Factory.StartNew(() =>
             {
-                ip = Dns.GetHostEntry(Server.Ip).AddressList[0];
-            }
+                var query = new Query(Server.Ip, Server.Port);
+                query.Send('i');
 
-            var iPortNo = Convert.ToInt16(Server.Port);
-            var ipEnd = new IPEndPoint(ip, iPortNo);
+                var count = query.Receive();
+                var info = query.Store(count);
 
-            var udpClient = new UdpClient();
+                if (info.Length == 0)
+                {
+                    /* qualcosa è andato storto? */
+                    return false;
+                }
 
-            udpClient.Connect(ipEnd);
+                Locked = int.Parse(info[0]) == 1;
+                Players = new List<Player>(int.Parse(info[2]));
+                Server.HostName = info[3];
+                Gamemode = info[4];
+                MapName = info[5];
 
-            var packet = SampSocket.CreatePacket(Server, "i");
-
-            udpClient.Send(
-                Encoding.ASCII.GetBytes(packet.ToCharArray()),
-                packet.ToCharArray().Length
-            );
-
-            var response = udpClient.Receive(ref ipEnd);
-            Debug.WriteLine("Response => " + Encoding.ASCII.GetString(response));
+                return true;
+            });
         }
 
         public override string ToString()

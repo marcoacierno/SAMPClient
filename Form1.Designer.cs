@@ -65,9 +65,8 @@ namespace SAMPClient
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.Padding = new System.Drawing.Point(6, 8);
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(782, 420);
+            this.metroTabControl1.Size = new System.Drawing.Size(781, 427);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -76,13 +75,12 @@ namespace SAMPClient
             // metroTabPage1
             // 
             this.metroTabPage1.Controls.Add(this.flowLayoutPanel1);
-            this.metroTabPage1.Enabled = true;
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(774, 378);
+            this.metroTabPage1.Size = new System.Drawing.Size(773, 387);
             this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Preferiti";
@@ -99,7 +97,7 @@ namespace SAMPClient
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(774, 378);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(773, 387);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // metroTabPage4
@@ -115,13 +113,12 @@ namespace SAMPClient
             this.metroTabPage4.Controls.Add(this.metroLabel2);
             this.metroTabPage4.Controls.Add(this.nicknameTextBox);
             this.metroTabPage4.Controls.Add(this.metroLabel1);
-            this.metroTabPage4.Enabled = true;
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(774, 378);
+            this.metroTabPage4.Size = new System.Drawing.Size(773, 385);
             this.metroTabPage4.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "Opzioni";
@@ -129,7 +126,6 @@ namespace SAMPClient
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
-            this.metroTabPage4.Visible = true;
             // 
             // metroButton2
             // 
@@ -166,7 +162,6 @@ namespace SAMPClient
             this.savePasswordRcon.Text = "Off";
             this.savePasswordRcon.Theme = MetroFramework.MetroThemeStyle.Light;
             this.savePasswordRcon.UseSelectable = true;
-            this.savePasswordRcon.UseVisualStyleBackColor = true;
             // 
             // metroLabel4
             // 
@@ -190,7 +185,6 @@ namespace SAMPClient
             this.saveServerPassword.Text = "Off";
             this.saveServerPassword.Theme = MetroFramework.MetroThemeStyle.Light;
             this.saveServerPassword.UseSelectable = true;
-            this.saveServerPassword.UseVisualStyleBackColor = true;
             // 
             // metroLabel3
             // 
@@ -269,13 +263,12 @@ namespace SAMPClient
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Enabled = true;
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(774, 378);
+            this.metroTabPage2.Size = new System.Drawing.Size(773, 387);
             this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Internet";
@@ -287,13 +280,12 @@ namespace SAMPClient
             // 
             // metroTabPage3
             // 
-            this.metroTabPage3.Enabled = true;
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(774, 378);
+            this.metroTabPage3.Size = new System.Drawing.Size(773, 387);
             this.metroTabPage3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Hosted";
@@ -307,7 +299,7 @@ namespace SAMPClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 500);
+            this.ClientSize = new System.Drawing.Size(821, 507);
             this.Controls.Add(this.metroTabControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

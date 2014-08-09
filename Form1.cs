@@ -1,4 +1,6 @@
-﻿using MetroFramework.Forms;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using MetroFramework.Forms;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Controls;
@@ -6,63 +8,33 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using Timer = System.Threading.Timer;
 
 namespace SAMPClient
 {
     public partial class Main : MetroForm
     {
-        private MetroTabControl mainTabs;
+        /// <summary>
+        /// A reference to the user settings
+        /// </summary>
         private Settings settings;
-        
+        /// <summary>
+        /// Contains all the servers which are visible to the user
+        /// </summary>
+        private List<Server> servers = new List<Server>();
+
         public Main()
         {
             InitializeComponent();
+            new Timer(UpdateServersInfo, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(10));
 
             settings = Settings.Read();
             Text = "SA-MP Client - " + settings.UserNickname;
 
             RestoreDefaultData();
 
-            var favourites = Favourites.Read();
-//            favourites.AddToFavourites(new Server(".: uL | Wargrounds - NEW SYNC (skinhit) :.", "dedi.slice-vps.nl:8888"));
-//            favourites.AddToFavourites(new Server(".: uL | Wargrounds - LAGSHOT (it's back!) :.", "dedi.slice-vps.nl:7777"));
-//            favourites.Save();
- 
-            favourites.Servers.ForEach(server =>
-            {
-                var tile = new MetroTile
-                {
-                    Text = server.HostName + Environment.NewLine + server.Ip,
-                    Size = new Size(152, 137),
-                    Style = MetroColorStyle.Yellow,
-                    AllowDrop = true
-                };
-                tile.Click += (sender, e) =>
-                {
-                    var result = MetroFramework.MetroMessageBox.Show(this,
-                        "Sei sicuro di voler entrare nel server " + server.HostName + " (" + server.Ip + ")?" + Environment.NewLine +
-                        server.ServerInfo,
-                        "Ingresso", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-
-                    if (result == DialogResult.No)
-                    {
-                        return;
-                    }
-
-                    var processStart = new ProcessStartInfo
-                    {
-                        WorkingDirectory = settings.GTABasePath,
-                        FileName = "samp",
-                        Arguments = server.Ip
-                    };
-
-                    Process.Start(processStart);
-                };
-                server.ServerInfo.ReadData();
-
-                flowLayoutPanel1.Controls.Add(tile);
-            });
-
+            Favourites favourites = Favourites.Read();
+            servers = favourites.Servers;
         }
 
         private void metroButton3_Click(object sender, EventArgs e)
@@ -96,6 +68,69 @@ namespace SAMPClient
             
             var directory = selectGTAPositionDialog.SelectedPath;
             gtaLocationTextBox.Text = directory;
+        }
+
+        public async void UpdateServersInfo(object obj)
+        {
+            var tasks = new List<Task>();
+            servers.ForEach(server => tasks.Add(server.ServerInfo.ReadData()));
+
+            await Task.WhenAll(tasks);
+
+            DrawServerTitles(flowLayoutPanel1);
+        }
+
+        private void DrawServerTitles(FlowLayoutPanel panel)
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)(() => UpdateServersInfo(panel)));
+                return;
+            }
+
+            UpdateServersInfo(panel);
+        }
+
+        private void UpdateServersInfo(FlowLayoutPanel panel)
+        {
+            panel.Controls.Clear();
+
+            servers.ForEach(server =>
+            {
+                var tile = new MetroTile
+                {
+                    Text = server.HostName + Environment.NewLine + server.Ip + Environment.NewLine +
+                           "Gamemode: " + server.ServerInfo.Gamemode + Environment.NewLine +
+                           "Map: " + server.ServerInfo.MapName,
+                    Size = new Size(152, 137),
+                    Style = MetroColorStyle.Red,
+                };
+                tile.Click += (sender, e) =>
+                {
+                    var result = MetroFramework.MetroMessageBox.Show(this,
+                        "Sei sicuro di voler entrare nel server " + server.HostName + " (" + server.Ip + ")?" +
+                        Environment.NewLine +
+                        server.ServerInfo,
+                        "Ingresso", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+
+                    var processStart = new ProcessStartInfo
+                    {
+                        WorkingDirectory = settings.GTABasePath,
+                        FileName = "samp",
+                        Arguments = server.Ip
+                    };
+
+                    Process.Start(processStart);
+                };
+                server.ServerInfo.ReadData();
+
+                panel.Controls.Add(tile);
+            });
         }
     }
 }
