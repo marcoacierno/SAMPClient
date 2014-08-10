@@ -137,6 +137,11 @@ namespace SAMPClient
                             return;
                         }
 
+                        if (!settings.KeepInSyncSampNickname)
+                        {
+                            
+                        }
+
                         var processStart = new ProcessStartInfo
                         {
                             WorkingDirectory = settings.GTABasePath,

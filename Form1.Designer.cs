@@ -51,6 +51,8 @@ namespace SAMPClient
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.selectGTAPositionDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.saveNicknameInSAMP = new MetroFramework.Controls.MetroToggle();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -80,7 +82,7 @@ namespace SAMPClient
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(773, 387);
+            this.metroTabPage1.Size = new System.Drawing.Size(773, 385);
             this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Preferiti";
@@ -97,11 +99,13 @@ namespace SAMPClient
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(773, 387);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(773, 385);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.Controls.Add(this.saveNicknameInSAMP);
+            this.metroTabPage4.Controls.Add(this.metroLabel5);
             this.metroTabPage4.Controls.Add(this.metroButton2);
             this.metroTabPage4.Controls.Add(this.metroButton3);
             this.metroTabPage4.Controls.Add(this.savePasswordRcon);
@@ -268,7 +272,7 @@ namespace SAMPClient
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(773, 387);
+            this.metroTabPage2.Size = new System.Drawing.Size(773, 385);
             this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Internet";
@@ -285,7 +289,7 @@ namespace SAMPClient
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(773, 387);
+            this.metroTabPage3.Size = new System.Drawing.Size(773, 385);
             this.metroTabPage3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "Hosted";
@@ -294,6 +298,29 @@ namespace SAMPClient
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             this.metroTabPage3.Visible = false;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(3, 122);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(126, 38);
+            this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel5.TabIndex = 14;
+            this.metroLabel5.Text = "Salva nickname nel \r\nclient SA:MP default";
+            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // saveNicknameInSAMP
+            // 
+            this.saveNicknameInSAMP.AutoSize = true;
+            this.saveNicknameInSAMP.Location = new System.Drawing.Point(150, 133);
+            this.saveNicknameInSAMP.Name = "saveNicknameInSAMP";
+            this.saveNicknameInSAMP.Size = new System.Drawing.Size(80, 17);
+            this.saveNicknameInSAMP.Style = MetroFramework.MetroColorStyle.Blue;
+            this.saveNicknameInSAMP.TabIndex = 15;
+            this.saveNicknameInSAMP.Text = "Off";
+            this.saveNicknameInSAMP.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.saveNicknameInSAMP.UseSelectable = true;
             // 
             // Main
             // 
@@ -333,6 +360,8 @@ namespace SAMPClient
         private MetroButton metroButton3;
         private FolderBrowserDialog selectGTAPositionDialog;
         private FlowLayoutPanel flowLayoutPanel1;
+        private MetroToggle saveNicknameInSAMP;
+        private MetroLabel metroLabel5;
 
     }
 }

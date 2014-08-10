@@ -14,11 +14,10 @@ namespace SAMPClient.Tests.Utility.SAMP
     {
         Socket qSocket;
         IPAddress address;
-        int _port = 0;
-        string _password = null;
-
+        int _port;
+        string _password;
         string[] results = new string[50];
-        int _count = 0;
+        int _count;
 
         public RCONQuery(string IP, int port, string password)
         {
@@ -45,11 +44,11 @@ namespace SAMPClient.Tests.Utility.SAMP
         {
             try
             {
-                IPEndPoint endpoint = new IPEndPoint(address, _port);
+                var endpoint = new IPEndPoint(address, _port);
 
-                using (MemoryStream stream = new MemoryStream())
+                using (var stream = new MemoryStream())
                 {
-                    using (BinaryWriter writer = new BinaryWriter(stream))
+                    using (var writer = new BinaryWriter(stream))
                     {
                         writer.Write("SAMP".ToCharArray());
 
