@@ -66,7 +66,7 @@ namespace SAMPClient
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(781, 427);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabControl1.TabIndex = 0;
@@ -250,6 +250,7 @@ namespace SAMPClient
             this.nicknameTextBox.TabIndex = 3;
             this.nicknameTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.nicknameTextBox.UseSelectable = true;
+            this.nicknameTextBox.MaxLength = 24;
             // 
             // metroLabel1
             // 
