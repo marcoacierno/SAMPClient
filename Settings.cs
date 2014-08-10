@@ -24,17 +24,12 @@ namespace SAMPClient
         public bool AutoSaveServerPassword;
         [XmlElement("saverconpsw")]
         public bool AutoSaveRconPassword;
-        [XmlElement("syncsampnickname")]
-        public bool KeepInSyncSampNickname;
 
         private Settings() { }
 
         public void Save()
         {
-            if (KeepInSyncSampNickname)
-            {
-                Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("SAMP").SetValue("PlayerName", UserNickname);
-            }
+            Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("SAMP").SetValue("PlayerName", UserNickname);
 
             var serializer = new XmlSerializer(GetType());
             
@@ -70,7 +65,6 @@ namespace SAMPClient
                 UserNickname = (string)key.GetValue("PlayerName") ?? "User" + new Random().Next(0, 10),
                 AutoSaveRconPassword = false,
                 AutoSaveServerPassword = false,
-                KeepInSyncSampNickname = true,
             };
             settings.GTABasePath = Path.GetDirectoryName(settings.GTALocation);
 

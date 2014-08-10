@@ -14,7 +14,7 @@ namespace SAMPClient
 {
     public partial class Main : MetroForm
     {
-        private MetroColorStyle[] colors =
+        private readonly MetroColorStyle[] colors =
         {
             MetroColorStyle.Red,
             MetroColorStyle.Blue,
@@ -137,11 +137,6 @@ namespace SAMPClient
                             return;
                         }
 
-                        if (!settings.KeepInSyncSampNickname)
-                        {
-                            
-                        }
-
                         var processStart = new ProcessStartInfo
                         {
                             WorkingDirectory = settings.GTABasePath,
@@ -167,6 +162,11 @@ namespace SAMPClient
         {
             serversDictionary.Clear();
             list.ForEach(server => serversDictionary.Add(server, null));
+        }
+
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"https://bitbucket.org/rrev/sampclient/issues/new");
         }
     }
 }

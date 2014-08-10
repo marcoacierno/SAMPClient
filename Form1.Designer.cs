@@ -51,8 +51,7 @@ namespace SAMPClient
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.selectGTAPositionDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.saveNicknameInSAMP = new MetroFramework.Controls.MetroToggle();
+            this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -67,7 +66,7 @@ namespace SAMPClient
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(781, 427);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabControl1.TabIndex = 0;
@@ -104,8 +103,6 @@ namespace SAMPClient
             // 
             // metroTabPage4
             // 
-            this.metroTabPage4.Controls.Add(this.saveNicknameInSAMP);
-            this.metroTabPage4.Controls.Add(this.metroLabel5);
             this.metroTabPage4.Controls.Add(this.metroButton2);
             this.metroTabPage4.Controls.Add(this.metroButton3);
             this.metroTabPage4.Controls.Add(this.savePasswordRcon);
@@ -299,34 +296,22 @@ namespace SAMPClient
             this.metroTabPage3.VerticalScrollbarSize = 10;
             this.metroTabPage3.Visible = false;
             // 
-            // metroLabel5
+            // metroLink1
             // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 122);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(126, 38);
-            this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel5.TabIndex = 14;
-            this.metroLabel5.Text = "Salva nickname nel \r\nclient SA:MP default";
-            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // saveNicknameInSAMP
-            // 
-            this.saveNicknameInSAMP.AutoSize = true;
-            this.saveNicknameInSAMP.Location = new System.Drawing.Point(150, 133);
-            this.saveNicknameInSAMP.Name = "saveNicknameInSAMP";
-            this.saveNicknameInSAMP.Size = new System.Drawing.Size(80, 17);
-            this.saveNicknameInSAMP.Style = MetroFramework.MetroColorStyle.Blue;
-            this.saveNicknameInSAMP.TabIndex = 15;
-            this.saveNicknameInSAMP.Text = "Off";
-            this.saveNicknameInSAMP.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.saveNicknameInSAMP.UseSelectable = true;
+            this.metroLink1.Location = new System.Drawing.Point(693, 31);
+            this.metroLink1.Name = "metroLink1";
+            this.metroLink1.Size = new System.Drawing.Size(102, 23);
+            this.metroLink1.TabIndex = 1;
+            this.metroLink1.Text = "Segnala un bug";
+            this.metroLink1.UseSelectable = true;
+            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 507);
+            this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroTabControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -360,8 +345,7 @@ namespace SAMPClient
         private MetroButton metroButton3;
         private FolderBrowserDialog selectGTAPositionDialog;
         private FlowLayoutPanel flowLayoutPanel1;
-        private MetroToggle saveNicknameInSAMP;
-        private MetroLabel metroLabel5;
+        private MetroLink metroLink1;
 
     }
 }
