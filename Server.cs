@@ -69,6 +69,7 @@ namespace SAMPClient
 
         public override int GetHashCode()
         {
+            // it don't work right now. todo fix it
             // when deserializer ip is null?
             return base.GetHashCode();
 //            return Ip.GetHashCode() + Port.GetHashCode();
