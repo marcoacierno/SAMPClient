@@ -12,9 +12,9 @@ namespace SAMPClient
         [XmlElement("hostname")]
         public string HostName;
         [XmlElement("ip")]
-        public string Ip;
+        public readonly string Ip;
         [XmlElement("port")] 
-        public int Port;
+        public readonly int Port;
         [XmlIgnore] 
         public ServerInfo ServerInfo;
 
@@ -37,6 +37,41 @@ namespace SAMPClient
         private Server()
         {
             ServerInfo = new ServerInfo(this);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            if (!(obj is Server)) return false;
+            
+            var sObj = (Server) obj;
+            return sObj.Ip == Ip && sObj.Port == Port;
+        }
+
+        public static bool operator ==(Server s1, Server s2)
+        {
+            return s1.Equals(s2);
+        }
+
+        public static bool operator !=(Server s1, Server s2)
+        {
+            return !(s1 == s2);
+        }
+
+        public override int GetHashCode()
+        {
+            // when deserializer ip is null?
+            return base.GetHashCode();
+//            return Ip.GetHashCode() + Port.GetHashCode();
         }
     }
 

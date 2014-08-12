@@ -10,6 +10,8 @@ namespace SAMPClient
 {
     static class Program
     {
+        public static string Version = "Beta 1";
+        public static bool Beta = true;
 
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -19,12 +21,13 @@ namespace SAMPClient
         {
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
-                MessageBox.Show("Sembra che si sia verificato un errore!");
+
             };
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
         }
+
     }
 }

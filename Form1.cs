@@ -35,15 +35,13 @@ namespace SAMPClient
         /// </summary>
         private Dictionary<Server, MetroTile> serversDictionary = new Dictionary<Server, MetroTile>();
 
-        public static string Version = "Beta 1";
-
         public Main()
         {
             InitializeComponent();
             new Timer(UpdateServersInfo, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(10));
 
             settings = Settings.Read();
-            Text = "SA-MP Client (" + Version + ") - " + settings.UserNickname;
+            Text = "SA-MP Client (" + Program.Version + ") - " + settings.UserNickname;
 
             RestoreDefaultData();
 

@@ -70,6 +70,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="Favourites.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Test\ServerTest.cs" />
     <Compile Include="Utility\SAMP\Query.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

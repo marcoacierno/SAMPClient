@@ -41,12 +41,12 @@ namespace SAMPClient
                 return new Favourites();
             }
 
-            var favourites = new Favourites();
+            Favourites favourites;
             var serializer = new XmlSerializer(typeof(Favourites));
 
-            using (var writer = new StreamReader(ServersFile))
+            using (var reader = new StreamReader(ServersFile))
             {
-                favourites = (Favourites)serializer.Deserialize(writer);
+                favourites = (Favourites)serializer.Deserialize(reader);
             }
 
             return favourites;
