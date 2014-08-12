@@ -10,11 +10,11 @@ namespace SAMPClient
     public class Server
     {
         [XmlElement("hostname")]
-        public string HostName;
+        public string HostName { get; private set; }
         [XmlElement("ip")]
-        public readonly string Ip;
-        [XmlElement("port")] 
-        public readonly int Port;
+        public string Ip { get; private set; }
+        [XmlElement("port")]
+        public int Port { get; private set; }
         [XmlIgnore] 
         public ServerInfo ServerInfo;
 
@@ -69,10 +69,7 @@ namespace SAMPClient
 
         public override int GetHashCode()
         {
-            // it don't work right now. todo fix it
-            // when deserializer ip is null?
-            return base.GetHashCode();
-//            return Ip.GetHashCode() + Port.GetHashCode();
+            return Ip.GetHashCode() + Port.GetHashCode();
         }
     }
 
