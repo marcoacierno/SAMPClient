@@ -10,7 +10,7 @@ namespace SAMPClient
     public class Server
     {
         [XmlElement("hostname")]
-        public string HostName { get; private set; }
+        public string HostName { get; set; }
         [XmlElement("ip")]
         public string Ip { get; private set; }
         [XmlElement("port")]
