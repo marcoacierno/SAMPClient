@@ -139,7 +139,7 @@ namespace SAMPClient
                         {
                             WorkingDirectory = settings.GTABasePath,
                             FileName = "samp",
-                            Arguments = server.Ip
+                            Arguments = server.Ip + ":" + server.Port
                         };
 
                         Process.Start(processStart);
@@ -165,6 +165,11 @@ namespace SAMPClient
         private void metroLink1_Click(object sender, EventArgs e)
         {
             Process.Start(@"https://bitbucket.org/rrev/sampclient/issues/new");
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Debug.WriteLine("Keypress");
         }
     }
 }

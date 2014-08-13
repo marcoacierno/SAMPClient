@@ -29,7 +29,7 @@ namespace SAMPClient
 
         public void Save()
         {
-            Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("SAMP").SetValue("PlayerName", UserNickname);
+//            Registry.CurrentUser.OpenSubKey("Software").OpenSubKey("SAMP").SetValue("PlayerName", UserNickname);
 
             var serializer = new XmlSerializer(GetType());
             

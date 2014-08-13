@@ -240,7 +240,7 @@ namespace SAMPClient
             // 
             this.nicknameTextBox.Lines = new string[0];
             this.nicknameTextBox.Location = new System.Drawing.Point(150, 15);
-            this.nicknameTextBox.MaxLength = 32767;
+            this.nicknameTextBox.MaxLength = 24;
             this.nicknameTextBox.Name = "nicknameTextBox";
             this.nicknameTextBox.PasswordChar = '\0';
             this.nicknameTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -250,7 +250,6 @@ namespace SAMPClient
             this.nicknameTextBox.TabIndex = 3;
             this.nicknameTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
             this.nicknameTextBox.UseSelectable = true;
-            this.nicknameTextBox.MaxLength = 24;
             // 
             // metroLabel1
             // 
@@ -318,6 +317,7 @@ namespace SAMPClient
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "SA-MP Client";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Main_KeyPress);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage4.ResumeLayout(false);
