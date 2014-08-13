@@ -38,7 +38,7 @@ namespace SAMPClient
         public Main()
         {
             InitializeComponent();
-            new Timer(UpdateServersInfo, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(10));
+            new Timer(UpdateServersInfo, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(3));
 
             settings = Settings.Read();
             Text = "SA-MP Client (" + Program.Version + ") - " + settings.UserNickname;
